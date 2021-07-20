@@ -1,0 +1,3 @@
+flowlauncher
+python-dotenv
+typing

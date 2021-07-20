@@ -1,0 +1,46 @@
+# English translations for Flow.plugin.currency.
+# Copyright (C) 2020 CitizenDee (author)
+# This file is distributed under the same license as the  project.
+# CitizenDee <deefrawley@gmail.com>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version:  2.0.0\n"
+"Report-Msgid-Bugs-To: deefrawley@gmail.com\n"
+"POT-Creation-Date: 2021-06-07 15:16+1000\n"
+"PO-Revision-Date: 2020-12-13 20:26+1100\n"
+"Last-Translator: CitizenDee <deefrawley@gmail.com>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: plugin/ui.py:49 plugin/ui.py:58
+msgid "Error - {}"
+msgstr "Error - {}"
+
+#: plugin/ui.py:50
+msgid "Check documentation for accepted units"
+msgstr ""
+
+#: plugin/ui.py:62
+#, fuzzy
+msgid "General Converter"
+msgstr "Currency Converter"
+
+#: plugin/ui.py:63
+#, fuzzy
+msgid "<Hotkey> <Amount> <Source unit> <Destination unit>"
+msgstr "<Hotkey> <Amount> <Source currency> <Destination currency>"
+
+#: plugin/utils.py:50
+msgid "To and from unit is the same"
+msgstr ""
+
+#: plugin/utils.py:83
+msgid "Problem converting {} and {}"
+msgstr ""
+

@@ -1,0 +1,12 @@
+{
+    "ID": "73f2c04d-176a-4586-9ff5-69fae63321ef",
+    "ActionKeyword": "gc",
+    "Name": "General Converter",
+    "Description": "General weights and measures converter",
+    "Author": "deefrawley",
+    "Version": "1.0.0",
+    "Language": "python",
+    "Website": "https://github.com/deefrawley/Flow.Launcher.Plugin.GenConvert",
+    "IcoPath": "assets/favicon.ico",
+    "ExecuteFileName": "main.py"
+}
