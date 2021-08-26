@@ -1,15 +1,15 @@
-# Chinese translations for PROJECT.
-# Copyright (C) 2021 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# English translations for Flow.plugin.currency.
+# Copyright (C) 2020 CitizenDee (author)
+# This file is distributed under the same license as the  project.
+# CitizenDee <deefrawley@gmail.com>, 2021.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-06-07 15:16+1000\n"
+"Project-Id-Version:  1.0.2\n"
+"Report-Msgid-Bugs-To: deefrawley@gmail.com\n"
+"POT-Creation-Date: 2021-08-26 18:04+1000\n"
 "PO-Revision-Date: 2021-06-07 15:16+1000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: CitizenDee <deefrawley@gmail.com>\n"
 "Language: zh\n"
 "Language-Team: zh <LL@li.org>\n"
 "Plural-Forms: nplurals=1; plural=0\n"
@@ -18,27 +18,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: plugin/ui.py:49 plugin/ui.py:58
+#: plugin/ui.py:42
+msgid "Available conversions"
+msgstr "可用转换"
+
+#: plugin/ui.py:54 plugin/ui.py:63
 msgid "Error - {}"
 msgstr "错误 - {}"
 
-#: plugin/ui.py:50
+#: plugin/ui.py:55
 msgid "Check documentation for accepted units"
 msgstr "检查文档以获取正确的度量单位"
 
-#: plugin/ui.py:62
+#: plugin/ui.py:67
 msgid "General Converter"
 msgstr "通用单位换算器"
 
-#: plugin/ui.py:63
+#: plugin/ui.py:68
 msgid "<Hotkey> <Amount> <Source unit> <Destination unit>"
 msgstr "<热键> <量> <源单元> <目的地单位>"
 
-#: plugin/utils.py:50
+#: plugin/utils.py:65
 msgid "To and from unit is the same"
 msgstr "源单元和目标单元相同"
 
-#: plugin/utils.py:83
+#: plugin/utils.py:98
 msgid "Problem converting {} and {}"
 msgstr "转换问题 {} 和 {}"
 

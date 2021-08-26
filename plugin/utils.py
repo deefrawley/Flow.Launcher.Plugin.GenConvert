@@ -45,7 +45,21 @@ units = {
 }
 
 
+def get_hints(from_unit):
+    """ Takes an input unit and returns a list of units it can be converted to """
+    for u in units:
+        if u == from_unit:
+            return [x for x in units[from_unit].keys()]
+        for u2 in units[u]:
+            if u2 == from_unit:
+                c = [x for x in units[u].keys() if x != from_unit]
+                c.append(u)
+                return c
+    return ["no valid units"]
+
+
 def genConvert(amount, from_unit, to_unit):
+    """ Convert between units """
     conversions = {}
     if from_unit == to_unit:
         conversions["Error"] = _("To and from unit is the same")

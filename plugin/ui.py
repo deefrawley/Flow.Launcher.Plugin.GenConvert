@@ -36,8 +36,13 @@ class Main(FlowLauncher):
     def query(self, param: str) -> List[dict]:
         q = param.strip()
         args = q.split(" ")
-
-        if len(args) == 3:
+        if len(args) == 2:
+            hints = plugin.utils.get_hints(args[1].lower())
+            self.sendNormalMess(
+                _("Available conversions"),
+                (f"{args[0]} {args[1]} to {', '.join(hints)}"),
+            )
+        elif len(args) == 3:
             try:
                 # Units are currently case insensitive. May need to change this if in future new units
                 # with official upper case shorthand are catered for
