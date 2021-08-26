@@ -1,13 +1,13 @@
 # English translations for Flow.plugin.currency.
 # Copyright (C) 2020 CitizenDee (author)
 # This file is distributed under the same license as the  project.
-# CitizenDee <deefrawley@gmail.com>, 2020.
+# CitizenDee <deefrawley@gmail.com>, 2021.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  2.0.0\n"
+"Project-Id-Version:  1.0.2\n"
 "Report-Msgid-Bugs-To: deefrawley@gmail.com\n"
-"POT-Creation-Date: 2021-06-07 15:16+1000\n"
+"POT-Creation-Date: 2021-08-26 18:04+1000\n"
 "PO-Revision-Date: 2020-12-13 20:26+1100\n"
 "Last-Translator: CitizenDee <deefrawley@gmail.com>\n"
 "Language: en\n"
@@ -18,29 +18,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: plugin/ui.py:49 plugin/ui.py:58
+#: plugin/ui.py:42
+msgid "Available conversions"
+msgstr ""
+
+#: plugin/ui.py:54 plugin/ui.py:63
 msgid "Error - {}"
 msgstr "Error - {}"
 
-#: plugin/ui.py:50
+#: plugin/ui.py:55
 msgid "Check documentation for accepted units"
 msgstr ""
 
-#: plugin/ui.py:62
+#: plugin/ui.py:67
 #, fuzzy
 msgid "General Converter"
 msgstr "Currency Converter"
 
-#: plugin/ui.py:63
+#: plugin/ui.py:68
 #, fuzzy
 msgid "<Hotkey> <Amount> <Source unit> <Destination unit>"
 msgstr "<Hotkey> <Amount> <Source currency> <Destination currency>"
 
-#: plugin/utils.py:50
+#: plugin/utils.py:65
 msgid "To and from unit is the same"
 msgstr ""
 
-#: plugin/utils.py:83
+#: plugin/utils.py:98
 msgid "Problem converting {} and {}"
 msgstr ""
 
