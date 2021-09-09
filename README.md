@@ -1,12 +1,13 @@
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 # General Converter (Flow.Launcher.GenConvert)
 
-General weight, distance, area, temperature converter for the [Flow Launcher](https://github.com/Flow-Launcher/Flow.Launcher)
+General weight, volume, distance, area, temperature converter for the [Flow Launcher](https://github.com/Flow-Launcher/Flow.Launcher)
 
 ### About
 
 ### Requirements
 
-Python 3.5 or later installed on your system, with python.exe in your PATH variable and this path updated in the Flow Launcher settings (this is a general requirement to use Python plugins with Flow). As of v1.8, Flow Launcher should take care of the installation of Python for you if it is not on your system.
+Python 3.5 or later. As of Flow Launcher v1.8, Flow should take care of the installation of Python for you if it is not on your system.
 
 ### Installing
 
@@ -26,8 +27,11 @@ Currently English and Chinese language supported. Edit the .env file to change t
 
 | Keyword                             | Description                                        |
 | ----------------------------------- | -------------------------------------------------- |
-| `gc <amount> <from unit> <to unit>` | Convert the amount of the from unit to the to unit |
+| `gc <amount> <from unit> <to unit>` | Convert the amount of the from unit to the to unit. |
 
+Just entering the keyword will give you the full list of units to choose from in Flow.
+
+Entering the keyword, amount and from unit will give you a subset list of units the from unit can be converted to
 #### Units
 
 The following units and their abbreviations can be used (each table can only convert among its' own units):
@@ -37,12 +41,13 @@ The following units and their abbreviations can be used (each table can only con
     <th>Subject</th>
     <th>Unit</th>
     <th>Abbreviation</th>
+    <th rowspan="9" align="center"><img src="assets/Distance.ico" alt="Distance Logo"></th>
   </tr>
   <tr>
-    <td rowspan="8" align="center">Distance</td>
+    <td rowspan="8" align="center"> Distance</td>
     <td>millimetre</td>
     <td>mm</td>
-   </tr>
+  </tr>
   <tr>
     <td>centimetre</td>
     <td>cm</td>
@@ -78,43 +83,76 @@ The following units and their abbreviations can be used (each table can only con
     <th>Subject</th>
     <th>Unit</th>
     <th>Abbreviation</th>
+    <th rowspan="189" align="center"><img src="assets/Volume.ico" alt="Volume Logo"></th>
   </tr>
   <tr>
-    <td rowspan="9" align="center">Fluids</td>
+    <td rowspan="17" align="center">Volume</td>
     <td>millilitre</td>
     <td>ml</td>
-   </tr>
+  </tr>
+  <tr>
+    <td>gram</td>
+    <td>gm</td>
+  </tr>
   <tr>
     <td>litre</td>
     <td>l</td>
   </tr>
   <tr>
-    <td>pint</td>
+    <td>pint US</td>
     <td>pt</td>
   </tr>
   <tr>
-    <td>quart</td>
+    <td>pint Imperial</td>
+    <td>ptimp</td>
+  </tr>
+  <tr>
+    <td>quart US</td>
     <td>qt</td>
   </tr>
   <tr>
-    <td>cup</td>
+    <td>quart Imperial</td>
+    <td>qtimp</td>
+  </tr>
+  <tr>
+    <td>cup US</td>
     <td>cup</td>
   </tr>
   <tr>
-    <td>teaspoon</td>
+    <td>cup Imperial</td>
+    <td>cupimp</td>
+  </tr>
+  <tr>
+    <td>teaspoon US</td>
     <td>tsp</td>
   </tr>
   <tr>
-    <td>tablespoon</td>
+    <td>teaspoon Imperial</td>
+    <td>tspimp</td>
+  </tr>
+  <tr>
+    <td>tablespoon US</td>
     <td>tbsp</td>
   </tr>
   <tr>
-    <td>gallon</td>
+    <td>tablespoon Imperial</td>
+    <td>tbspimp</td>
+  </tr>
+  <tr>
+    <td>gallon US</td>
     <td>gal</td>
   </tr>
   <tr>
-    <td>gram</td>
-    <td>gm</td>
+    <td>gallon Imperial</td>
+    <td>galimp</td>
+  </tr>
+  <tr>
+    <td>fluid ounce US</td>
+    <td>floz</td>
+  </tr>
+  <tr>
+    <td>fluid ounce Imperial</td>
+    <td>flozimp</td>
   </tr>
 </table>
 
@@ -123,6 +161,7 @@ The following units and their abbreviations can be used (each table can only con
     <th>Subject</th>
     <th>Unit</th>
     <th>Abbreviation</th>
+    <th rowspan="10" align="center"><img src="assets/Area.ico" alt="Area Logo"></th>
   </tr>
   <tr>
     <td rowspan="9" align="center">Area</td>
@@ -168,6 +207,7 @@ The following units and their abbreviations can be used (each table can only con
     <th>Subject</th>
     <th>Unit</th>
     <th>Abbreviation</th>
+    <th rowspan="7" align="center"><img src="assets/Weight.ico" alt="Weight Logo"></th>
   </tr>
   <tr>
     <td rowspan="6" align="center">Weight</td>
@@ -201,15 +241,20 @@ The following units and their abbreviations can be used (each table can only con
     <th>Subject</th>
     <th>Unit</th>
     <th>Abbreviation</th>
+    <th rowspan="4" align="center"><img src="assets/Temperature.ico" alt="Temperature Logo"></th>
   </tr>
   <tr>
-    <td rowspan = "2" align="center">Temperature</td>
+    <td rowspan = "3" align="center">Temperature</td>
     <td>celsius</td>
     <td>c</td>
    </tr>
   <tr>
     <td>Farenheit</td>
     <td>f</td>
+  </tr>
+  <tr>
+    <td>Kelvin</td>
+    <td>k</td>
   </tr>
 </table>
 
