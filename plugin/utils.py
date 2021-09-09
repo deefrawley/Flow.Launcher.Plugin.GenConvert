@@ -1,109 +1,114 @@
+import plugin.units as gc_units
 from plugin.extensions import _
 
-units = {
-    "m": {
-        "mm": 1000,
-        "cm": 100,
-        "km": 0.001,
-        "in": 39.37008,
-        "ft": 3.28084,
-        "yd": 1.093613,
-        "mi": 0.0006213712,
-    },
-    "ml": {
-        "gm": 1,
-        "l": 0.001,
-        "pt": 0.002113383,
-        "qt": 0.001056691,
-        "cup": 0.004226764,
-        "tbsp": 0.067628224,
-        "tsp": 0.2028846715942,
-        "gal": 0.0002641727499999601,
-        "floz": 0.03381413,
-    },
-    "sqm": {
-        "h": 0.0001,
-        "ac": 0.0002471052,
-        "sqcm": 10000,
-        "sqkm": 1000000,
-        "sqin": 1550.003,
-        "sqmi": 0.0000003861022,
-        "sqft": 10.76391,
-        "sqyd": 1.19599,
-    },
-    "gm": {
-        "kg": 0.001,
-        "lb": 0.002205,
-        "oz": 0.035274,
-        "st": 0.000157473,
-        "ton": 0.000001102310999995,
-    },
-    # Special case temp C to F - actually handled in code
-    "c": {
-        "f": 1.8,
-    },
-}
+
+def get_hints_for_category(from_unit: str):
+    """Takes an input unit and returns a list of units it can be converted to
+
+    :param from_short: unit abbreviation
+    :type amount: str
+
+    :rtype: list
+    :return: A list of other unit abbreviations in the same category
+    """
+    c = []
+    category = ""
+
+    # Find the category it's in
+    for u in gc_units.units:
+        for u2 in gc_units.units[u]:
+            if u2[0] == from_unit:
+                category = str(u)
+    if category:
+        # Go back and iterate over the category again and get all the units that are not the from unit
+        for uu in gc_units.units[category]:
+            if uu[0] != from_unit:
+                c.append(uu[0])
+        if not c:
+            return ["no valid units"]
+        return c
+    else:
+        return ["no valid units"]
 
 
-def get_hints(from_unit):
-    """ Takes an input unit and returns a list of units it can be converted to """
-    for u in units:
-        if u == from_unit:
-            return [x for x in units[from_unit].keys()]
-        for u2 in units[u]:
-            if u2 == from_unit:
-                c = [x for x in units[u].keys() if x != from_unit]
-                c.append(u)
-                return c
-    return ["no valid units"]
+def get_all_units(short=False):
+    """Returns all available units as a list of lists by category
+
+    :param short: if True only unit abbreviations are returned, default is False
+    :type amount: bool
+
+    :rtype: list of lists
+    :return: A list of lists for each category in units. Index 0 of each internal list
+            is the category description
+    """
+
+    full_list = []
+    for u in gc_units.units:
+        cat_list = []
+        cat_list.append(u)
+        for u2 in gc_units.units[u]:
+            cat_list.append(u2[0] if short else f"{u2[1]} ({u2[0]})")
+        full_list.append(cat_list)
+    return full_list
 
 
-def genConvert(amount, from_unit, to_unit):
-    """ Convert between units """
+def gen_convert(amount: float, from_unit: str, to_unit: str):
+    """Converts from one unit to another
+
+    :param amount: amount of source unit to convert
+    :type amount: float
+    :param from_unit: abbreviation of unit  to convert from
+    :type from_unit: str
+    :param to_unit: abbreviation of unit to convert to
+    :type to_unit: str
+
+    :rtype: dict
+    :return: if to_unit and from_unit are valid returns a dictionary
+            {
+                "category":{category of units},
+                "converted":{converted amount},
+                "fromabbrev":{from unit abbreviation},
+                "fromlong":{from unit long name},
+                "fromplural":{from unit plural name},
+                "toabbrev":{to unit abbreviation},
+                "tolong":{to unit long name},
+                "toplural":{to unit plural name},
+            }
+
+            else returns a dictionary with error status
+            {"Error": {error text}}
+    """
     conversions = {}
+    found_from = found_to = []
     if from_unit == to_unit:
         conversions["Error"] = _("To and from unit is the same")
         return conversions
-    # Handle celsius and farenheit as special cases as they aren't converted by exponents
-    elif from_unit == "c" and to_unit == "f":
-        conversions[to_unit] = (amount * 1.8) + 32
-        return conversions
-    elif from_unit == "f" and to_unit == "c":
-        conversions[to_unit] = (amount - 32) / 1.8
-        return conversions
-    # Convert from key unit to sub-unit (e.g. cm to in)
-    elif from_unit in units and to_unit in units[from_unit]:
-        conversions[to_unit] = units[from_unit][to_unit] * amount
-        return conversions
-    # Convert from sub-unit to key unit (e.g. in to cm)
-    elif to_unit in units and from_unit in units[to_unit]:
-        conversions[to_unit] = (1 / units[to_unit][from_unit]) * amount
-        return conversions
-    # Convert from sub-unit to sub-unit (e.g. in to ft)
+    for u in gc_units.units:
+        for u2 in gc_units.units[u]:
+            if u2[0] == from_unit:
+                found_from = u2
+            if u2[0] == to_unit:
+                found_to = u2
+        # If we haven't both in the same category, reset
+        if found_to and found_from:
+            found_category = u
+            break
+        else:
+            found_from = found_to = []
+    if found_to and found_from:
+        base_unit_conversion = eval(found_from[3].replace("x", str(amount)))
+        final_conversion = eval(found_to[4].replace("x", str(base_unit_conversion)))
+        conversions["category"] = found_category
+        conversions["converted"] = final_conversion
+        conversions["fromabbrev"] = found_from[0]
+        conversions["fromlong"] = found_from[1]
+        conversions["fromplural"] = found_from[2]
+        conversions["toabbrev"] = found_to[0]
+        conversions["tolong"] = found_to[1]
+        conversions["toplural"] = found_to[2]
+
     else:
-        for u in units:
-            to_sub = False
-            from_sub = False
-            for u2 in units[u]:
-                if u2 == to_unit:
-                    to_sub = True
-                elif u2 == from_unit:
-                    from_sub = True
-                if to_sub and from_sub:
-                    # Convert via the key unit
-                    conversions[to_unit] = (1 / units[u][from_unit]) * (
-                        units[u][to_unit] * amount
-                    )
-                    return conversions
-        conversions["Error"] = _("Problem converting {} and {}").format(
-            from_unit, to_unit
+        conversions["Error"] = _(
+            "Problem converting {} and {}".format(from_unit, to_unit)
         )
-        return conversions
-
-
-def listUnits():
-    # Utility function to print out all conversions
-    for all_units in units.keys():
-        print(f"\n{all_units}, ", end="")
-        for all_to_units in units[all_units].keys():
-            print(f"{all_to_units}, ", end="")
+    return conversions
