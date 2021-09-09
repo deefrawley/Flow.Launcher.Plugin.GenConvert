@@ -1,15 +1,15 @@
-# English translations for Flow.plugin.currency.
-# Copyright (C) 2020 CitizenDee (author)
+# Chinese translations for Flow.plugin.genconvert.
+# Copyright (C) 2020 deefrawley (author)
 # This file is distributed under the same license as the  project.
-# CitizenDee <deefrawley@gmail.com>, 2021.
+# deefrawley <deefrawley@gmail.com>, 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version:  1.0.2\n"
 "Report-Msgid-Bugs-To: deefrawley@gmail.com\n"
-"POT-Creation-Date: 2021-08-26 18:04+1000\n"
+"POT-Creation-Date: 2021-09-09 13:07+1000\n"
 "PO-Revision-Date: 2021-06-07 15:16+1000\n"
-"Last-Translator: CitizenDee <deefrawley@gmail.com>\n"
+"Last-Translator: deefrawley <deefrawley@gmail.com>\n"
 "Language: zh\n"
 "Language-Team: zh <LL@li.org>\n"
 "Plural-Forms: nplurals=1; plural=0\n"
@@ -18,31 +18,363 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: plugin/ui.py:42
-msgid "Available conversions"
-msgstr "可用转换"
-
-#: plugin/ui.py:54 plugin/ui.py:63
-msgid "Error - {}"
-msgstr "错误 - {}"
-
-#: plugin/ui.py:55
-msgid "Check documentation for accepted units"
-msgstr "检查文档以获取正确的度量单位"
-
-#: plugin/ui.py:67
+#: plugin/ui.py:46 plugin/ui.py:100
 msgid "General Converter"
 msgstr "通用单位换算器"
 
-#: plugin/ui.py:68
+#: plugin/ui.py:47 plugin/ui.py:101
 msgid "<Hotkey> <Amount> <Source unit> <Destination unit>"
 msgstr "<热键> <量> <源单元> <目的地单位>"
 
-#: plugin/utils.py:65
+#: plugin/ui.py:65
+msgid "Available conversions"
+msgstr "可用转换"
+
+#: plugin/ui.py:79
+msgid "{}"
+msgstr ""
+
+#: plugin/ui.py:80
+msgid "Choose two different units"
+msgstr "选择两个不同的单位"
+
+#: plugin/ui.py:85 plugin/ui.py:96
+msgid "Error - {}"
+msgstr "错误 - {}"
+
+#: plugin/ui.py:86
+msgid "Check documentation for accepted units"
+msgstr "检查文档以获取正确的度量单位"
+
+#: plugin/units.py:20
+msgid "Distance"
+msgstr "距离"
+
+#: plugin/units.py:22
+msgid "metre"
+msgstr "仪表"
+
+#: plugin/units.py:22
+msgid "metres"
+msgstr "仪表"
+
+#: plugin/units.py:24
+msgid "millimetre"
+msgstr "毫米"
+
+#: plugin/units.py:24
+msgid "millimetres"
+msgstr "毫米"
+
+#: plugin/units.py:25
+msgid "centimetre"
+msgstr "厘米"
+
+#: plugin/units.py:25
+msgid "centimetres"
+msgstr "厘米"
+
+#: plugin/units.py:26
+msgid "kilometre"
+msgstr "公里"
+
+#: plugin/units.py:26
+msgid "kilometres"
+msgstr "公里"
+
+#: plugin/units.py:27
+msgid "inch"
+msgstr "英寸"
+
+#: plugin/units.py:27
+msgid "inches"
+msgstr "英寸"
+
+#: plugin/units.py:28
+msgid "foot"
+msgstr "丈"
+
+#: plugin/units.py:28
+msgid "feet"
+msgstr "丈"
+
+#: plugin/units.py:29
+msgid "yard"
+msgstr "码尺"
+
+#: plugin/units.py:29
+msgid "yards"
+msgstr "码尺"
+
+#: plugin/units.py:30
+msgid "mile"
+msgstr "英里"
+
+#: plugin/units.py:30
+msgid "miles"
+msgstr "英里"
+
+#: plugin/units.py:32
+msgid "Volume"
+msgstr "量"
+
+#: plugin/units.py:37
+msgid "millilitre"
+msgstr "毫升"
+
+#: plugin/units.py:37
+msgid "millilitres"
+msgstr "毫升"
+
+#: plugin/units.py:39 plugin/units.py:160
+msgid "gram"
+msgstr "公克"
+
+#: plugin/units.py:39 plugin/units.py:160
+msgid "grams"
+msgstr "公克"
+
+#: plugin/units.py:40
+msgid "litre"
+msgstr "升"
+
+#: plugin/units.py:40
+msgid "litres"
+msgstr "升"
+
+#: plugin/units.py:41
+msgid "pint US"
+msgstr "品脱 US"
+
+#: plugin/units.py:41
+msgid "pints US"
+msgstr "品脱 US"
+
+#: plugin/units.py:44
+msgid "pint Imperial"
+msgstr "英品脱"
+
+#: plugin/units.py:45
+msgid "pints Imperial"
+msgstr "英品脱"
+
+#: plugin/units.py:49
+msgid "quart US"
+msgstr "夸脱 US"
+
+#: plugin/units.py:49
+msgid "quarts US"
+msgstr "夸脱 US"
+
+#: plugin/units.py:52
+msgid "quart Imperial"
+msgstr "英夸脱"
+
+#: plugin/units.py:53
+msgid "quarts Imperial"
+msgstr "英夸脱"
+
+#: plugin/units.py:59
+msgid "cup US"
+msgstr "杯 US"
+
+#: plugin/units.py:60
+msgid "cups US"
+msgstr "杯 US"
+
+#: plugin/units.py:66
+msgid "cup Imperial"
+msgstr "英杯"
+
+#: plugin/units.py:67
+msgid "cups Imperial"
+msgstr "英杯"
+
+#: plugin/units.py:73
+msgid "tablespoon US"
+msgstr "汤匙 US"
+
+#: plugin/units.py:74
+msgid "tabelspoons US"
+msgstr "汤匙 US"
+
+#: plugin/units.py:80
+msgid "tablespoon Imperial"
+msgstr "英汤匙"
+
+#: plugin/units.py:81
+msgid "tabelspoons Imperial"
+msgstr "英汤匙"
+
+#: plugin/units.py:87
+msgid "teaspoon US"
+msgstr "茶匙 US"
+
+#: plugin/units.py:88
+msgid "teaspoons US"
+msgstr "茶匙 US"
+
+#: plugin/units.py:94
+msgid "teaspoon Imperial"
+msgstr "英茶匙"
+
+#: plugin/units.py:95
+msgid "teaspoons Imperial"
+msgstr "英茶匙"
+
+#: plugin/units.py:101
+msgid "gallon US"
+msgstr "加仑 US"
+
+#: plugin/units.py:102
+msgid "gallons US"
+msgstr "加仑 US"
+
+#: plugin/units.py:108
+msgid "gallon Imperial"
+msgstr "英加仑"
+
+#: plugin/units.py:109
+msgid "gallons Imperial"
+msgstr "英加仑"
+
+#: plugin/units.py:115
+msgid "fluid ounce US"
+msgstr "液盎司 US"
+
+#: plugin/units.py:116
+msgid "fluid ounces US"
+msgstr "液盎司 US"
+
+#: plugin/units.py:122
+msgid "fluid ounce Imperial"
+msgstr "英液盎司"
+
+#: plugin/units.py:123
+msgid "fluid ounces Imperial"
+msgstr "英液盎司"
+
+#: plugin/units.py:130
+msgid "square metre"
+msgstr "平方米"
+
+#: plugin/units.py:130
+msgid "square metres"
+msgstr "平方米"
+
+#: plugin/units.py:131
+msgid "hectare"
+msgstr "公顷"
+
+#: plugin/units.py:131
+msgid "hectares"
+msgstr "公顷"
+
+#: plugin/units.py:132
+msgid "acre"
+msgstr "英亩"
+
+#: plugin/units.py:132
+msgid "acres"
+msgstr "英亩"
+
+#: plugin/units.py:135
+msgid "square centimetre"
+msgstr "平方厘米"
+
+#: plugin/units.py:136
+msgid "square centimetres"
+msgstr "平方厘米"
+
+#: plugin/units.py:142
+msgid "square kilometre"
+msgstr "平方公里"
+
+#: plugin/units.py:143
+msgid "square kilometres"
+msgstr "平方公里"
+
+#: plugin/units.py:147
+msgid "square inch"
+msgstr "平方英寸"
+
+#: plugin/units.py:147
+msgid "square inches"
+msgstr "平方英寸"
+
+#: plugin/units.py:150
+msgid "square mile"
+msgstr "平方英里"
+
+#: plugin/units.py:151
+msgid "square miles"
+msgstr "平方英里"
+
+#: plugin/units.py:155
+msgid "square foot"
+msgstr "平方英尺"
+
+#: plugin/units.py:155
+msgid "square feet"
+msgstr "平方英尺"
+
+#: plugin/units.py:156
+msgid "square yard"
+msgstr "平方码"
+
+#: plugin/units.py:156
+msgid "square yards"
+msgstr "平方码"
+
+#: plugin/units.py:162
+msgid "kilogram"
+msgstr "公斤"
+
+#: plugin/units.py:162
+msgid "kilograms"
+msgstr "公斤"
+
+#: plugin/units.py:163
+msgid "pound"
+msgstr "磅"
+
+#: plugin/units.py:163
+msgid "pounds"
+msgstr "磅"
+
+#: plugin/units.py:164
+msgid "ounce"
+msgstr "盎司"
+
+#: plugin/units.py:164
+msgid "ounces"
+msgstr "盎司"
+
+#: plugin/units.py:165
+msgid "stone"
+msgstr "石头"
+
+#: plugin/units.py:168 plugin/units.py:169
+msgid "ton"
+msgstr "吨"
+
+#: plugin/units.py:176
+msgid "Celsius"
+msgstr "摄氏"
+
+#: plugin/units.py:178
+msgid "Farenheit"
+msgstr "华氏度"
+
+#: plugin/units.py:179
+msgid "Kelvin"
+msgstr "开尔文"
+
+#: plugin/utils.py:84
 msgid "To and from unit is the same"
 msgstr "源单元和目标单元相同"
 
-#: plugin/utils.py:98
+#: plugin/utils.py:112
 msgid "Problem converting {} and {}"
 msgstr "转换问题 {} 和 {}"
 

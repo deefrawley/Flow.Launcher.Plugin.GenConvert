@@ -1,15 +1,15 @@
-# English translations for Flow.plugin.currency.
-# Copyright (C) 2020 CitizenDee (author)
+# English translations for Flow.plugin.genconvert.
+# Copyright (C) 2020 deefrawley (author)
 # This file is distributed under the same license as the  project.
-# CitizenDee <deefrawley@gmail.com>, 2021.
+# deefrawley <deefrawley@gmail.com>, 2021.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  1.0.2\n"
+"Project-Id-Version:  1.1.0\n"
 "Report-Msgid-Bugs-To: deefrawley@gmail.com\n"
-"POT-Creation-Date: 2021-08-26 18:04+1000\n"
+"POT-Creation-Date: 2021-09-09 13:07+1000\n"
 "PO-Revision-Date: 2020-12-13 20:26+1100\n"
-"Last-Translator: CitizenDee <deefrawley@gmail.com>\n"
+"Last-Translator: deefrawley <deefrawley@gmail.com>\n"
 "Language: en\n"
 "Language-Team: en <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -18,33 +18,363 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: plugin/ui.py:42
-msgid "Available conversions"
-msgstr ""
+#: plugin/ui.py:46 plugin/ui.py:100
+msgid "General Converter"
+msgstr "General Converter"
 
-#: plugin/ui.py:54 plugin/ui.py:63
+#: plugin/ui.py:47 plugin/ui.py:101
+msgid "<Hotkey> <Amount> <Source unit> <Destination unit>"
+msgstr "<Hotkey> <Amount> <Source unit> <Destination unit>"
+
+#: plugin/ui.py:65
+msgid "Available conversions"
+msgstr "Available conversions"
+
+#: plugin/ui.py:79
+msgid "{}"
+msgstr "{}"
+
+#: plugin/ui.py:80
+msgid "Choose two different units"
+msgstr "Choose two different units"
+
+#: plugin/ui.py:85 plugin/ui.py:96
 msgid "Error - {}"
 msgstr "Error - {}"
 
-#: plugin/ui.py:55
+#: plugin/ui.py:86
 msgid "Check documentation for accepted units"
-msgstr ""
+msgstr "Check documentation for accepted units"
 
-#: plugin/ui.py:67
-#, fuzzy
-msgid "General Converter"
-msgstr "Currency Converter"
+#: plugin/units.py:20
+msgid "Distance"
+msgstr "Distance"
 
-#: plugin/ui.py:68
-#, fuzzy
-msgid "<Hotkey> <Amount> <Source unit> <Destination unit>"
-msgstr "<Hotkey> <Amount> <Source currency> <Destination currency>"
+#: plugin/units.py:22
+msgid "metre"
+msgstr "metre"
 
-#: plugin/utils.py:65
+#: plugin/units.py:22
+msgid "metres"
+msgstr "metres"
+
+#: plugin/units.py:24
+msgid "millimetre"
+msgstr "millimetre"
+
+#: plugin/units.py:24
+msgid "millimetres"
+msgstr "millimetres"
+
+#: plugin/units.py:25
+msgid "centimetre"
+msgstr "centimetre"
+
+#: plugin/units.py:25
+msgid "centimetres"
+msgstr "centimetres"
+
+#: plugin/units.py:26
+msgid "kilometre"
+msgstr "kilometre"
+
+#: plugin/units.py:26
+msgid "kilometres"
+msgstr "kilometres"
+
+#: plugin/units.py:27
+msgid "inch"
+msgstr "inch"
+
+#: plugin/units.py:27
+msgid "inches"
+msgstr "inches"
+
+#: plugin/units.py:28
+msgid "foot"
+msgstr "foot"
+
+#: plugin/units.py:28
+msgid "feet"
+msgstr "feet"
+
+#: plugin/units.py:29
+msgid "yard"
+msgstr "yard"
+
+#: plugin/units.py:29
+msgid "yards"
+msgstr "yards"
+
+#: plugin/units.py:30
+msgid "mile"
+msgstr "mile"
+
+#: plugin/units.py:30
+msgid "miles"
+msgstr "miles"
+
+#: plugin/units.py:32
+msgid "Volume"
+msgstr "Volume"
+
+#: plugin/units.py:37
+msgid "millilitre"
+msgstr "millilitre"
+
+#: plugin/units.py:37
+msgid "millilitres"
+msgstr "millilitres"
+
+#: plugin/units.py:39 plugin/units.py:160
+msgid "gram"
+msgstr "gram"
+
+#: plugin/units.py:39 plugin/units.py:160
+msgid "grams"
+msgstr "grams"
+
+#: plugin/units.py:40
+msgid "litre"
+msgstr "litre"
+
+#: plugin/units.py:40
+msgid "litres"
+msgstr "litres"
+
+#: plugin/units.py:41
+msgid "pint US"
+msgstr "pint US"
+
+#: plugin/units.py:41
+msgid "pints US"
+msgstr "pints US"
+
+#: plugin/units.py:44
+msgid "pint Imperial"
+msgstr "pint Imperial"
+
+#: plugin/units.py:45
+msgid "pints Imperial"
+msgstr "pints Imperial"
+
+#: plugin/units.py:49
+msgid "quart US"
+msgstr "quart US"
+
+#: plugin/units.py:49
+msgid "quarts US"
+msgstr "quarts US"
+
+#: plugin/units.py:52
+msgid "quart Imperial"
+msgstr "quart Imperial"
+
+#: plugin/units.py:53
+msgid "quarts Imperial"
+msgstr "quarts Imperial"
+
+#: plugin/units.py:59
+msgid "cup US"
+msgstr "cup US"
+
+#: plugin/units.py:60
+msgid "cups US"
+msgstr "cups US"
+
+#: plugin/units.py:66
+msgid "cup Imperial"
+msgstr "cup Imperial"
+
+#: plugin/units.py:67
+msgid "cups Imperial"
+msgstr "cups Imperial"
+
+#: plugin/units.py:73
+msgid "tablespoon US"
+msgstr "tablespoon US"
+
+#: plugin/units.py:74
+msgid "tabelspoons US"
+msgstr "tabelspoons US"
+
+#: plugin/units.py:80
+msgid "tablespoon Imperial"
+msgstr "tablespoon Imperial"
+
+#: plugin/units.py:81
+msgid "tabelspoons Imperial"
+msgstr "tabelspoons Imperial"
+
+#: plugin/units.py:87
+msgid "teaspoon US"
+msgstr "teaspoon US"
+
+#: plugin/units.py:88
+msgid "teaspoons US"
+msgstr "teaspoons US"
+
+#: plugin/units.py:94
+msgid "teaspoon Imperial"
+msgstr "teaspoon Imperial"
+
+#: plugin/units.py:95
+msgid "teaspoons Imperial"
+msgstr "teaspoons Imperial"
+
+#: plugin/units.py:101
+msgid "gallon US"
+msgstr "gallon US"
+
+#: plugin/units.py:102
+msgid "gallons US"
+msgstr "gallons US"
+
+#: plugin/units.py:108
+msgid "gallon Imperial"
+msgstr "gallon Imperial"
+
+#: plugin/units.py:109
+msgid "gallons Imperial"
+msgstr "gallons Imperial"
+
+#: plugin/units.py:115
+msgid "fluid ounce US"
+msgstr "fluid ounce US"
+
+#: plugin/units.py:116
+msgid "fluid ounces US"
+msgstr "fluid ounces US"
+
+#: plugin/units.py:122
+msgid "fluid ounce Imperial"
+msgstr "fluid ounce Imperial"
+
+#: plugin/units.py:123
+msgid "fluid ounces Imperial"
+msgstr "fluid ounces Imperial"
+
+#: plugin/units.py:130
+msgid "square metre"
+msgstr "square metre"
+
+#: plugin/units.py:130
+msgid "square metres"
+msgstr "square metres"
+
+#: plugin/units.py:131
+msgid "hectare"
+msgstr "hectare"
+
+#: plugin/units.py:131
+msgid "hectares"
+msgstr "hectares"
+
+#: plugin/units.py:132
+msgid "acre"
+msgstr "acre"
+
+#: plugin/units.py:132
+msgid "acres"
+msgstr "acres"
+
+#: plugin/units.py:135
+msgid "square centimetre"
+msgstr "square centimetre"
+
+#: plugin/units.py:136
+msgid "square centimetres"
+msgstr "square centimetres"
+
+#: plugin/units.py:142
+msgid "square kilometre"
+msgstr "square kilometre"
+
+#: plugin/units.py:143
+msgid "square kilometres"
+msgstr "square kilometres"
+
+#: plugin/units.py:147
+msgid "square inch"
+msgstr "square inch"
+
+#: plugin/units.py:147
+msgid "square inches"
+msgstr "square inches"
+
+#: plugin/units.py:150
+msgid "square mile"
+msgstr "square mile"
+
+#: plugin/units.py:151
+msgid "square miles"
+msgstr "square miles"
+
+#: plugin/units.py:155
+msgid "square foot"
+msgstr "square foot"
+
+#: plugin/units.py:155
+msgid "square feet"
+msgstr "square feet"
+
+#: plugin/units.py:156
+msgid "square yard"
+msgstr "square yard"
+
+#: plugin/units.py:156
+msgid "square yards"
+msgstr "square yards"
+
+#: plugin/units.py:162
+msgid "kilogram"
+msgstr "kilogram"
+
+#: plugin/units.py:162
+msgid "kilograms"
+msgstr "kilograms"
+
+#: plugin/units.py:163
+msgid "pound"
+msgstr "pound"
+
+#: plugin/units.py:163
+msgid "pounds"
+msgstr "pounds"
+
+#: plugin/units.py:164
+msgid "ounce"
+msgstr "ounce"
+
+#: plugin/units.py:164
+msgid "ounces"
+msgstr "ounces"
+
+#: plugin/units.py:165
+msgid "stone"
+msgstr "stone"
+
+#: plugin/units.py:168 plugin/units.py:169
+msgid "ton"
+msgstr "ton"
+
+#: plugin/units.py:176
+msgid "Celsius"
+msgstr "Celsius"
+
+#: plugin/units.py:178
+msgid "Farenheit"
+msgstr "Farenheit"
+
+#: plugin/units.py:179
+msgid "Kelvin"
+msgstr "Kelvin"
+
+#: plugin/utils.py:84
 msgid "To and from unit is the same"
-msgstr ""
+msgstr "To and from unit is the same"
 
-#: plugin/utils.py:98
+#: plugin/utils.py:112
 msgid "Problem converting {} and {}"
-msgstr ""
+msgstr "Problem converting {} and {}"
 
