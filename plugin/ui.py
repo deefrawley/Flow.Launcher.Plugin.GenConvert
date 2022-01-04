@@ -88,10 +88,14 @@ class Main(FlowLauncher):
                             _("Check documentation for accepted units"),
                         )
                 else:
+                    c = do_convert["converted"]
+                    p = plugin.utils.smart_precision(
+                        locale.localeconv()["decimal_point"], c, 3
+                    )
                     self.sendNormalMess(
                         (do_convert["category"]),
                         (
-                            f"{locale.format_string('%.6g', float(args[0]), grouping=True)} {args[1]} = {locale.format_string('%f', do_convert['converted'], grouping=True)} {args[2]}"
+                            f"{locale.format_string('%.10g', float(args[0]), grouping=True)} {args[1]} = {locale.format_string(f'%.{p}f', c, grouping=True)} {args[2]}"
                         ),
                         f"assets/{do_convert['category']}.ico",
                     )
