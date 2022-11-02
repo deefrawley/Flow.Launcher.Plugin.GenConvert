@@ -36,7 +36,7 @@ units = {
         # Base
         ["ml", _("millilitre"), _("millilitres"), "x * 1", "x * 1"],
         # All below convert to/from base
-        ["gm", _("gram"), _("grams"), "x * 1", "x * 1"],
+        ["g", _("gram"), _("grams"), "x * 1", "x * 1"],
         ["l", _("litre"), _("litres"), "x / 0.001", "x * 0.001"],
         ["pt", _("pint US"), _("pints US"), "x / 0.002113383", "x * 0.002113383"],
         [
@@ -157,7 +157,7 @@ units = {
     ],
     "Weight": [
         # Base
-        ["gm", _("gram"), _("grams"), "x * 1", "x * 1"],
+        ["g", _("gram"), _("grams"), "x * 1", "x * 1"],
         # All below convert to/from base
         ["kg", _("kilogram"), _("kilograms"), "x / 0.001", "x * 0.001"],
         ["lb", _("pound"), _("pounds"), "x / 0.002205", "x * 0.002205"],
