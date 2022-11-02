@@ -1,3 +1,4 @@
+import re
 import plugin.units as gc_units
 from plugin.extensions import _
 
@@ -109,3 +110,19 @@ def gen_convert(amount: float, from_unit: str, to_unit: str):
             "Problem converting {} and {}".format(from_unit, to_unit)
         )
     return conversions
+
+
+def smart_precision(separator, amount, preferred=3):
+    str_amt = str(amount)
+    dec_places = str_amt[::-1].find(separator)
+    # whole number
+    if dec_places == -1:
+        return 0
+    frac_part = str_amt[-dec_places::]
+    # fraction is just zeroes
+    if int(frac_part) == 0:
+        return 0
+    fnz = re.search(r"[1-9]", frac_part).start()
+    if fnz < preferred:
+        return preferred
+    return fnz + 1
