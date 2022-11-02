@@ -19,13 +19,10 @@ def get_hints_for_category(from_unit: str):
         for u2 in gc_units.units[u]:
             if u2[0] == from_unit:
                 category = str(u)
+                for uu in gc_units.units[category]:
+                    if uu[0] != from_unit:
+                        c.append(uu[0])
     if category:
-        # Go back and iterate over the category again and get all the units that are not the from unit
-        for uu in gc_units.units[category]:
-            if uu[0] != from_unit:
-                c.append(uu[0])
-        if not c:
-            return ["no valid units"]
         return c
     else:
         return ["no valid units"]
