@@ -25,9 +25,9 @@ Currently English and Chinese language supported. Edit the .env file to change t
 
 ### Usage
 
-| Keyword                             | Description                                        |
-| ----------------------------------- | -------------------------------------------------- |
-| `gc <amount> <from unit> <to unit>` | Convert the amount of the from unit to the to unit. |
+| Keyword                                                       | Description                                        |
+| ------------------------------------------------------------- | -------------------------------------------------- |
+| `gc <amount> <from unit abbreviation> <to unit abbreviation>` | Convert the amount of the from unit to the to unit. |
 
 Just entering the keyword will give you the full list of units to choose from in Flow.
 
@@ -92,7 +92,7 @@ The following units and their abbreviations can be used (each table can only con
   </tr>
   <tr>
     <td>gram</td>
-    <td>gm</td>
+    <td>g</td>
   </tr>
   <tr>
     <td>litre</td>
@@ -212,7 +212,7 @@ The following units and their abbreviations can be used (each table can only con
   <tr>
     <td rowspan="6" align="center">Weight</td>
     <td>gram</td>
-    <td>gm</td>
+    <td>g</td>
    </tr>
   <tr>
     <td>kilogram</td>
