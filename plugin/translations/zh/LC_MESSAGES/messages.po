@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  1.0.2\n"
+"Project-Id-Version:  1.1.3\n"
 "Report-Msgid-Bugs-To: deefrawley@gmail.com\n"
-"POT-Creation-Date: 2021-09-09 13:07+1000\n"
+"POT-Creation-Date: 2022-11-08 09:22+1100\n"
 "PO-Revision-Date: 2021-06-07 15:16+1000\n"
 "Last-Translator: deefrawley <deefrawley@gmail.com>\n"
 "Language: zh\n"
@@ -18,31 +18,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: plugin/ui.py:46 plugin/ui.py:100
+#: plugin/ui.py:48 plugin/ui.py:108
 msgid "General Converter"
 msgstr "通用单位换算器"
 
-#: plugin/ui.py:47 plugin/ui.py:101
+#: plugin/ui.py:49 plugin/ui.py:109
 msgid "<Hotkey> <Amount> <Source unit> <Destination unit>"
 msgstr "<热键> <量> <源单元> <目的地单位>"
 
-#: plugin/ui.py:65
+#: plugin/ui.py:67
 msgid "Available conversions"
 msgstr "可用转换"
 
-#: plugin/ui.py:79
+#: plugin/ui.py:81
 msgid "{}"
 msgstr ""
 
-#: plugin/ui.py:80
+#: plugin/ui.py:82
 msgid "Choose two different units"
 msgstr "选择两个不同的单位"
 
-#: plugin/ui.py:85 plugin/ui.py:96
+#: plugin/ui.py:87 plugin/ui.py:104
 msgid "Error - {}"
 msgstr "错误 - {}"
 
-#: plugin/ui.py:86
+#: plugin/ui.py:88
 msgid "Check documentation for accepted units"
 msgstr "检查文档以获取正确的度量单位"
 
@@ -354,27 +354,48 @@ msgstr "盎司"
 msgid "stone"
 msgstr "石头"
 
-#: plugin/units.py:168 plugin/units.py:169
-msgid "ton"
-msgstr "吨"
+#: plugin/units.py:168
+msgid "tonne"
+msgstr "公吨"
+
+#: plugin/units.py:169
+msgid "tonnes"
+msgstr "公吨"
+
+#: plugin/units.py:175
+msgid "US ton"
+msgstr "美吨"
 
 #: plugin/units.py:176
+msgid "US tons"
+msgstr "美吨"
+
+#: plugin/units.py:182
+msgid "Imperial ton"
+msgstr "英制吨"
+
+#: plugin/units.py:183
+msgid "Imperial tons"
+msgstr "英制吨"
+
+#: plugin/units.py:190
 msgid "Celsius"
 msgstr "摄氏"
 
-#: plugin/units.py:178
+#: plugin/units.py:192
 msgid "Farenheit"
 msgstr "华氏度"
 
-#: plugin/units.py:179
+#: plugin/units.py:193
 msgid "Kelvin"
 msgstr "开尔文"
 
-#: plugin/utils.py:84
+#: plugin/utils.py:82
 msgid "To and from unit is the same"
 msgstr "源单元和目标单元相同"
 
-#: plugin/utils.py:112
+#: plugin/utils.py:110
 msgid "Problem converting {} and {}"
 msgstr "转换问题 {} 和 {}"
+
 
