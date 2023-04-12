@@ -6,7 +6,6 @@ body:
         Convert between different types of units.
   - type: checkbox
     attributes:
-      attributes:
       name: show_helper_text
       label: "Show helper text of what can be converted"
       defaultValue: "true"

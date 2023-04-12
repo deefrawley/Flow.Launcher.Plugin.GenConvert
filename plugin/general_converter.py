@@ -1,5 +1,4 @@
 import locale
-import decimal
 import textwrap
 import re
 import units as gc_units
@@ -23,9 +22,11 @@ class GenConvert(Flox):
             all_units = get_all_units()
             self.add_item(
                 title=_("General Converter"),
-                subtitle=_("<Hotkey> <Amount> <Source unit> <Destination unit>"),
+                subtitle=_(
+                    "<Hotkey> <Amount> <Source unit - case sensitive> <Destination unit - case sensitive>"
+                ),
             )
-            if not self.settings.get("show_helper_text"):
+            if self.settings.get("show_helper_text"):
                 for cat in all_units:
                     title = str(cat[0])
                     subtitle = ", ".join([str(elem) for elem in cat[1:]])
@@ -50,7 +51,7 @@ class GenConvert(Flox):
                         )
         # Keyword and first unit to convert from - show what it can be converted to
         elif len(args) == 2:
-            hints = get_hints_for_category(args[1].lower())
+            hints = get_hints_for_category(args[1])
             self.add_item(
                 title=_("Available conversions"),
                 subtitle=(f"{args[0]} {args[1]} to {', '.join(hints)}"),
@@ -58,10 +59,7 @@ class GenConvert(Flox):
         # Keyword and two units to convert from and to - try to convert
         elif len(args) == 3:
             try:
-                # Units are currently case insensitive. May need to change this if in future new units
-                # with official upper case shorthand are catered for
-                args[1] = args[1].lower()
-                args[2] = args[2].lower()
+                # Units are case sensitive.
                 do_convert = gen_convert(float(args[0]), args[1], args[2])
                 if "Error" in do_convert:
                     if do_convert["Error"] == _("To and from unit is the same"):
@@ -132,7 +130,7 @@ def get_hints_for_category(from_unit: str):
     # Find the category it's in
     for u in gc_units.units:
         for u2 in gc_units.units[u]:
-            if u2[0] == from_unit:
+            if u2[0] == from_unit or u2[1] == from_unit or u2[2] == from_unit:
                 category = str(u)
                 for uu in gc_units.units[category]:
                     if uu[0] != from_unit:
@@ -176,9 +174,9 @@ def gen_convert(amount: float, from_unit: str, to_unit: str):
         return conversions
     for u in gc_units.units:
         for u2 in gc_units.units[u]:
-            if u2[0] == from_unit:
+            if u2[0] == from_unit or u2[1] == from_unit or u2[2] == from_unit:
                 found_from = u2
-            if u2[0] == to_unit:
+            if u2[0] == to_unit or u2[1] == to_unit or u2[2] == to_unit:
                 found_to = u2
         # If we haven't both in the same category, reset
         if found_to and found_from:

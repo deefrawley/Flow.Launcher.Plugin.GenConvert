@@ -21,6 +21,7 @@ units = {
         # Base
         ["m", _("metre"), _("metres"), "x * 1", "x * 1"],
         # All below convert to/from base
+        ["dm", _("decimetre"), _("decimetres"), "x / 10", "x * 10"],
         ["mm", _("millimetre"), _("millimetres"), "x / 1000", "x * 1000"],
         ["cm", _("centimetre"), _("centimetres"), "x / 100", "x * 100"],
         ["km", _("kilometre"), _("kilometres"), "x / 0.001", "x * 0.001"],
@@ -38,6 +39,7 @@ units = {
         # All below convert to/from base
         ["g", _("gram"), _("grams"), "x * 1", "x * 1"],
         ["l", _("litre"), _("litres"), "x / 0.001", "x * 0.001"],
+        ["decal", _("decalitre"), _("decalitres"), "x / 0.0001", "x * 0.0001"],
         ["pt", _("pint US"), _("pints US"), "x / 0.002113383", "x * 0.002113383"],
         [
             "ptimp",
@@ -124,6 +126,62 @@ units = {
             "x / 0.03519508",
             "x * 0.03519508",
         ],
+        [
+            "dm3",
+            _("cubic decimetre"),
+            _("cubic decimetres"),
+            "x / 0.001",
+            "x * 0.001",
+        ],
+        [
+            "mm3",
+            _("cubic millimetre"),
+            _("cubic millimetres"),
+            "x / 0.1000",
+            "x * 0.1000",
+        ],
+        [
+            "cm3",
+            _("cubic centimetre"),
+            _("cubic centimetres"),
+            "x / 1",
+            "x * 1",
+        ],
+        [
+            "m3",
+            _("cubic metre"),
+            _("cubic metres"),
+            "x / 0.000001",
+            "x * 0.000001",
+        ],
+        [
+            "in3",
+            _("cubic inch"),
+            _("cubic inches"),
+            "x / 0.061024",
+            "x * 0.061024",
+        ],
+        [
+            "ft3",
+            _("cubic feet"),
+            _("cubic feet"),
+            "x / 0.0000353147",
+            "x * 0.0000353147",
+        ],
+        [
+            "buuk",
+            _("bushel UK"),
+            _("bushels UK"),
+            "x / 0.0000274961",
+            "x * 0.0000274961",
+        ],
+        [
+            "buus",
+            _("bushel US"),
+            _("bushels US"),
+            "x / 0.0000283776",
+            "x * 0.0000283776",
+        ],
     ],
     "Area": [
         # Base
@@ -191,5 +249,83 @@ units = {
         # All below convert to/from base
         ["f", _("Farenheit"), _("Farenheit"), "(x - 32) / 1.8", "(x * 1.8) + 32"],
         ["k", _("Kelvin"), _("Kelvin"), "x - 273.15", "x + 273.15"],
+    ],
+    "Speed": [
+        # Base
+        ["km/h", _("kilometres per hour"), _("kilometres per hour"), "x * 1", "x * 1"],
+        [
+            "m/s",
+            _("metres per second"),
+            _("metres per second"),
+            "x / 0.2777777778",
+            "x * 0.2777777778",
+        ],
+        [
+            "mp/h",
+            _("miles per hour"),
+            _("miles per hour"),
+            "x / 0.6213711922",
+            "x * 0.6213711922",
+        ],
+        [
+            "kt",
+            _("knot"),
+            _("knots"),
+            "x / 0.5399568035",
+            "x * 0.5399568035",
+        ],
+    ],
+    "Energy": [
+        # Base
+        ["J", _("joule"), _("joules"), "x * 1", "x * 1"],
+        [
+            "cal",
+            _("calorie"),
+            _("calories"),
+            "x / 0.2388459",
+            "x * 0.2388459",
+        ],
+        [
+            "kcal",
+            _("kilocalorie"),
+            _("kilocalories"),
+            "x / 0.0002388459",
+            "x * 0.0002388459",
+        ],
+        [
+            "kJ",
+            _("kilojoule"),
+            _("kilojoules"),
+            "x / 0.001",
+            "x * 0.001",
+        ],
+        [
+            "MJ",
+            _("megajoule"),
+            _("megajoules"),
+            "x / 0.000001",
+            "x * 0.000001",
+        ],
+        [
+            "Gj",
+            _("gigajoule"),
+            _("gigajoules"),
+            "x / 0.0000000010",
+            "x * 0.0000000010",
+        ],
+        [
+            "kWh",
+            _("kilowatt hour"),
+            _("kilowatt hours"),
+            "x / 0.0000002778",
+            "x * 0.0000002778",
+        ],
+        [
+            "BTU",
+            _("British thermal unit"),
+            _("British thermal units"),
+            "x / 0.0009478171",
+            "x * 0.0009478171",
+        ],
     ],
 }

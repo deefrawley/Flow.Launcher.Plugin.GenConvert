@@ -1,13 +1,13 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 # General Converter (Flow.Launcher.GenConvert)
 
-General weight, volume, distance, area, temperature converter for the [Flow Launcher](https://github.com/Flow-Launcher/Flow.Launcher)
+General weight, volume, distance, area, temperature, speed and energy converter for the [Flow Launcher](https://github.com/Flow-Launcher/Flow.Launcher)
 
 ### About
 
 ### Requirements
 
-Python 3.5 or later. As of Flow Launcher v1.8, Flow should take care of the installation of Python for you if it is not on your system.
+Python 3.9 or later. As of Flow Launcher v1.8, Flow should take care of the installation of Python for you if it is not on your system.
 
 ### Installing
 
@@ -29,7 +29,10 @@ Currently English and Chinese language supported. Edit the .env file to change t
 | ------------------------------------------------------------- | -------------------------------------------------- |
 | `gc <amount> <from unit abbreviation> <to unit abbreviation>` | Convert the amount of the from unit to the to unit. |
 
-Just entering the keyword will give you the full list of units to choose from in Flow.
+The from and to unit are case sensitive.
+
+Just entering the keyword will give you the full list of units to choose from in Flow. If you want to remove the keyword for this plugin and have it return
+results when you simply start entering a number then go to the Plugin settings and turn this helper text off.
 
 Entering the keyword, amount and from unit will give you a subset list of units the from unit can be converted to
 #### Units
@@ -41,10 +44,10 @@ The following units and their abbreviations can be used (each table can only con
     <th>Subject</th>
     <th>Unit</th>
     <th>Abbreviation</th>
-    <th rowspan="9" align="center"><img src="assets/Distance.ico" alt="Distance Logo"></th>
+    <th rowspan="10" align="center"><img src="assets/Distance.ico" alt="Distance Logo"></th>
   </tr>
   <tr>
-    <td rowspan="8" align="center"> Distance</td>
+    <td rowspan="9" align="center"> Distance</td>
     <td>millimetre</td>
     <td>mm</td>
   </tr>
@@ -55,6 +58,10 @@ The following units and their abbreviations can be used (each table can only con
   <tr>
     <td>metre</td>
     <td>m</td>
+  </tr>
+  <tr>
+    <td>decimetre</td>
+    <td>dm</td>
   </tr>
   <tr>
     <td>kilometre</td>
@@ -83,10 +90,10 @@ The following units and their abbreviations can be used (each table can only con
     <th>Subject</th>
     <th>Unit</th>
     <th>Abbreviation</th>
-    <th rowspan="189" align="center"><img src="assets/Volume.ico" alt="Volume Logo"></th>
+    <th rowspan="27" align="center"><img src="assets/Volume.ico" alt="Volume Logo"></th>
   </tr>
   <tr>
-    <td rowspan="17" align="center">Volume</td>
+    <td rowspan="26" align="center">Volume</td>
     <td>millilitre</td>
     <td>ml</td>
   </tr>
@@ -97,6 +104,10 @@ The following units and their abbreviations can be used (each table can only con
   <tr>
     <td>litre</td>
     <td>l</td>
+  </tr>
+  <tr>
+    <td>decalitre</td>
+    <td>decal</td>
   </tr>
   <tr>
     <td>pint US</td>
@@ -153,6 +164,38 @@ The following units and their abbreviations can be used (each table can only con
   <tr>
     <td>fluid ounce Imperial</td>
     <td>flozimp</td>
+  </tr>
+  <tr>
+    <td>cubic decimetre</td>
+    <td>dm3</td>
+  </tr>
+  <tr>
+    <td>cubic millimetre</td>
+    <td>mm3</td>
+  </tr>
+  <tr>
+    <td>cubic centimetre</td>
+    <td>cm3</td>
+  </tr>
+  <tr>
+    <td>cubic metre</td>
+    <td>m3</td>
+  </tr>
+  <tr>
+    <td>cubic inch</td>
+    <td>in3</td>
+  </tr>
+  <tr>
+    <td>cubic feet</td>
+    <td>ft3</td>
+  </tr>
+  <tr>
+    <td>bushel UK</td>
+    <td>buuk</td>
+  </tr>
+  <tr>
+    <td>bushel US</td>
+    <td>buus</td>
   </tr>
 </table>
 
@@ -255,6 +298,66 @@ The following units and their abbreviations can be used (each table can only con
   <tr>
     <td>Kelvin</td>
     <td>k</td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>Subject</th>
+    <th>Unit</th>
+    <th>Abbreviation</th>
+    <th rowspan="4" align="center"><img src="assets/Speed.ico" alt="Speed Logo"></th>
+  </tr>
+  <tr>
+    <td rowspan = "3" align="center">Speed</td>
+    <td>kilometres per hour</td>
+    <td>km/h</td>
+   </tr>
+  <tr>
+    <td>miles per hour</td>
+    <td>mp/h</td>
+  </tr>
+  <tr>
+    <td>knots</td>
+    <td>kt</td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>Subject</th>
+    <th>Unit</th>
+    <th>Abbreviation</th>
+    <th rowspan="8" align="center"><img src="assets/Energy.ico" alt="Energy Logo"></th>
+  </tr>
+  <tr>
+    <td rowspan = "7" align="center">Energy</td>
+    <td>calories</td>
+    <td>cal</td>
+   </tr>
+  <tr>
+    <td>kilocalories</td>
+    <td>kcal</td>
+  </tr>
+  <tr>
+    <td>kilojoules</td>
+    <td>kJ</td>
+  </tr>
+  <tr>
+    <td>megajoules</td>
+    <td>MJ</td>
+  </tr>
+  <tr>
+    <td>gigajoules</td>
+    <td>Gj</td>
+  </tr>
+  <tr>
+    <td>kilowatt hours</td>
+    <td>kWh</td>
+  </tr>
+  <tr>
+    <td>British thermal units</td>
+    <td>BTU</td>
   </tr>
 </table>
 
