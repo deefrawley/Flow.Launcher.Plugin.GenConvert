@@ -2,24 +2,7 @@
 
 import json
 import os
-
 import click
-
-from plugin import (
-    ICON_PATH,
-    PLUGIN_ACTION_KEYWORD,
-    PLUGIN_AUTHOR,
-    PLUGIN_EXECUTE_FILENAME,
-    PLUGIN_ID,
-    PLUGIN_PROGRAM_LANG,
-    PLUGIN_URL,
-    __long_description__,
-    __package_name__,
-    __package_title__,
-    __short_description__,
-    __version__,
-    basedir,
-)
 
 
 @click.group()
