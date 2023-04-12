@@ -1,0 +1,13 @@
+body:
+  - type: textBlock
+    attributes:
+      name: description
+      description: >
+        Convert between different types of units.
+  - type: checkbox
+    attributes:
+      attributes:
+      name: show_helper_text
+      label: "Show helper text of what can be converted"
+      defaultValue: "true"
+      description: "If you remove the keyword for this plugin so it triggers on any number then turn this off"

@@ -1,4 +1,4 @@
-from plugin.extensions import _
+from translation import _
 
 """
 Unit Syntax:
