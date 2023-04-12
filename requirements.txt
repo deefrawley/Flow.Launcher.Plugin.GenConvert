@@ -1,3 +1,2 @@
-flowlauncher
-python-dotenv
-typing
+flox-lib==0.19.6
+python-dotenv==0.20.0

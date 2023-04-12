@@ -7,7 +7,7 @@ sys.path.append(parent_folder_path)
 sys.path.append(os.path.join(parent_folder_path, "lib"))
 sys.path.append(os.path.join(parent_folder_path, "plugin"))
 
-from plugin import Main
+from plugin.general_converter import GenConvert
 
 if __name__ == "__main__":
-    Main()
+    GenConvert()
