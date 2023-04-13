@@ -74,12 +74,19 @@ class GenConvert(Flox):
                             subtitle=_("Check documentation for accepted units"),
                         )
                 else:
-                    c = do_convert["converted"]
-                    p = smart_precision(locale.localeconv()["decimal_point"], c, 3)
+                    converted = do_convert["converted"]
+                    category = do_convert["category"]
+                    to_long = do_convert["toplural"]
+                    to_abb = do_convert["toabbrev"]
+                    from_long = do_convert["fromplural"]
+                    from_abb = do_convert["fromabbrev"]
+                    converted_precision = smart_precision(
+                        locale.localeconv()["decimal_point"], converted, 3
+                    )
                     self.add_item(
-                        title=(do_convert["category"]),
+                        title=(category),
                         subtitle=(
-                            f"{locale.format_string('%.10g', float(args[0]), grouping=True)} {args[1]} = {locale.format_string(f'%.{p}f', c, grouping=True)} {args[2]}"
+                            f"{locale.format_string('%.10g', float(args[0]), grouping=True)} {from_long} ({from_abb}) = {locale.format_string(f'%.{converted_precision}f', converted, grouping=True)} {to_long} ({to_abb})"
                         ),
                         icon=f"assets/{do_convert['category']}.ico",
                     )
@@ -94,7 +101,7 @@ class GenConvert(Flox):
             )
 
 
-def get_all_units(short=False):
+def get_all_units(short: bool = False):
     """Returns all available units as a list of lists by category
 
     :param short: if True only unit abbreviations are returned, default is False
