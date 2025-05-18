@@ -219,7 +219,7 @@ units = {
         # All below convert to/from base
         ["kg", _("kilogram"), _("kilograms"), "x / 0.001", "x * 0.001"],
         ["lb", _("pound"), _("pounds"), "x / 0.002205", "x * 0.002205"],
-        ["oz", _("ounce"), _("ounces"), "x / 0.035274", " 0.035274"],
+        ["oz", _("ounce"), _("ounces"), "x / 0.035274", "x * 0.035274"],
         ["st", _("stone"), _("stone"), "x / 0.000157473", "x * 0.000157473"],
         [
             "t",
