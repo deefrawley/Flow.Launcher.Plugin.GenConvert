@@ -1,4 +1,5 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 # General Converter (Flow.Launcher.GenConvert)
 
 General weight, volume, distance, area, temperature, speed and energy converter for the [Flow Launcher](https://github.com/Flow-Launcher/Flow.Launcher)
@@ -25,8 +26,8 @@ Currently English and Chinese language supported. Edit the .env file to change t
 
 ### Usage
 
-| Keyword                                                       | Description                                        |
-| ------------------------------------------------------------- | -------------------------------------------------- |
+| Keyword                                                       | Description                                         |
+| ------------------------------------------------------------- | --------------------------------------------------- |
 | `gc <amount> <from unit abbreviation> <to unit abbreviation>` | Convert the amount of the from unit to the to unit. |
 
 The from and to unit are case sensitive.
@@ -35,6 +36,7 @@ Just entering the keyword will give you the full list of units to choose from in
 results when you simply start entering a number then go to the Plugin settings and turn this helper text off.
 
 Entering the keyword, amount and from unit will give you a subset list of units the from unit can be converted to
+
 #### Units
 
 The following units and their abbreviations can be used (each table can only convert among its' own units):
@@ -358,6 +360,66 @@ The following units and their abbreviations can be used (each table can only con
   <tr>
     <td>British thermal units</td>
     <td>BTU</td>
+  </tr>
+<table>
+  <tr>
+    <th>Subject</th>
+    <th>Unit</th>
+    <th>Abbreviation</th>
+    <th rowspan="13" align="center"><img src="assets/Data.ico" alt="Data Logo"></th>
+  </tr>
+  <tr>
+    <td rowspan = "13" align="center">Data</td>
+    <td>Bytes</td>
+    <td>B</td>
+   </tr>
+  <tr>
+    <td>KiloBytes</td>
+    <td>KB</td>
+  </tr>
+  <tr>
+    <td>GigaBytes</td>
+    <td>GB</td>
+  </tr>
+  <tr>
+    <td>PetaBytes</td>
+    <td>PB</td>
+  </tr>
+  <tr>
+    <td>Kibibytes</td>
+    <td>KiB</td>
+  </tr>
+  <tr>
+    <td>Gibibytes</td>
+    <td>GiB</td>
+  </tr>
+  <tr>
+    <td>Pebibytes</td>
+    <td>PiB</td>
+  </tr>
+  <tr>
+    <td>bits</td>
+    <td>b</td>
+  </tr>
+  <tr>
+    <td>Kilobits</td>
+    <td>Kb</td>
+  </tr>
+  <tr>
+    <td>Megabits</td>
+    <td>Mb</td>
+  </tr>
+  <tr>
+    <td>Gigabits</td>
+    <td>Gb</td>
+  </tr>
+  <tr>
+    <td>Terabits</td>
+    <td>Tb</td>
+  </tr>
+  <tr>
+    <td>Pebibytes</td>
+    <td>PiB</td>
   </tr>
 </table>
 

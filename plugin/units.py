@@ -20,7 +20,7 @@ units = {
     _("Distance"): [
         # Base
         ["m", _("metre"), _("metres"), "x * 1", "x * 1"],
-        # All below convert to/from base
+        # All below convert to / from base
         ["dm", _("decimetre"), _("decimetres"), "x / 10", "x * 10"],
         ["mm", _("millimetre"), _("millimetres"), "x / 1000", "x * 1000"],
         ["cm", _("centimetre"), _("centimetres"), "x / 100", "x * 100"],
@@ -327,5 +327,32 @@ units = {
             "x / 0.0009478171",
             "x * 0.0009478171",
         ],
+    ],
+    "data": [
+        # byte is the base
+        ["B", _("byte"), _("bytes"), "x * 1", "x * 1"],
+        ["KB", _("kilobyte"), _("kilobytes"), "x / 0.001", "x * 0.001"],  # 10^3,
+        ["MB", _("megabyte"), _("megabytes"), "x / 0.000001", "x * 0.000001"],  # 10^6,
+        [
+            "GB",
+            _("gigabyte"),
+            _("gigabytes"),
+            "x / 0.000000001",
+            "x * 0.000000001",
+        ],  # 10^9,
+        [
+            "TB",
+            _("terabyte"),
+            _("terabytes"),
+            "x / 0.000000000001",
+            "x * 0.000000000001",
+        ],  # 10^12,
+        [
+            "PB",
+            _("petabyte"),
+            _("petabytes"),
+            "x / 0.000000000000001",
+            "x * 0.000000000000001",
+        ],  # 10^15,
     ],
 }
