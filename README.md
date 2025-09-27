@@ -361,15 +361,17 @@ The following units and their abbreviations can be used (each table can only con
     <td>British thermal units</td>
     <td>BTU</td>
   </tr>
+</table>
+
 <table>
   <tr>
     <th>Subject</th>
     <th>Unit</th>
     <th>Abbreviation</th>
-    <th rowspan="13" align="center"><img src="assets/Data.ico" alt="Data Logo"></th>
+    <th rowspan="14" align="center"><img src="assets/Data.ico" alt="Data Logo"></th>
   </tr>
   <tr>
-    <td rowspan = "13" align="center">Data</td>
+    <td rowspan="14" align="center">Data</td>
     <td>Bytes</td>
     <td>B</td>
    </tr>
