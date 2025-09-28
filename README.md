@@ -368,7 +368,7 @@ The following units and their abbreviations can be used (each table can only con
     <th>Subject</th>
     <th>Unit</th>
     <th>Abbreviation</th>
-    <th rowspan="14" align="center"><img src="assets/Data.ico" alt="Data Logo"></th>
+    <th rowspan="14" align="center"><img src="assets/data.ico" alt="Data Logo"></th>
   </tr>
   <tr>
     <td rowspan="14" align="center">Data</td>
