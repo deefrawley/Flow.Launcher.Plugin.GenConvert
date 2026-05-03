@@ -1,224 +1,169 @@
 import locale
 import textwrap
 import re
+import subprocess
 import units as gc_units
 
 from translation import _
 from flox import Flox
 
+try:
+    locale.setlocale(locale.LC_NUMERIC, "")
+except locale.Error:
+    locale.setlocale(locale.LC_NUMERIC, "C")
+
+
+# ---------------------------------------------------------------------------
+# Unit lookup helpers
+# ---------------------------------------------------------------------------
+
+def _find_unit(abbr: str):
+    """Return (category_key, unit_tuple) or (None, None)."""
+    for cat_key, cat in gc_units.units.items():
+        for u in cat["units"]:
+            if abbr in (u[0], u[1], u[2]):
+                return cat_key, u
+    return None, None
+
+
+# ---------------------------------------------------------------------------
+# Public API
+# ---------------------------------------------------------------------------
+
+def get_all_units(short: bool = False) -> list:
+    """Return [[category, unit, ...], ...] — index 0 is always the category name."""
+    result = []
+    for cat_key, cat in gc_units.units.items():
+        row = [cat_key] + [u[0] if short else f"{u[1]} ({u[0]})" for u in cat["units"]]
+        result.append(row)
+    return result
+
+
+def get_hints_for_category(from_unit: str) -> list:
+    """Return abbreviations of all other units in the same category."""
+    cat_key, _ = _find_unit(from_unit)
+    if not cat_key:
+        return [_("no valid units")]
+    return [u[0] for u in gc_units.units[cat_key]["units"] if u[0] != from_unit]
+
+
+def gen_convert(amount: float, from_unit: str, to_unit: str) -> dict:
+    """Convert amount from from_unit to to_unit.
+
+    Returns a result dict on success or {"Error": reason} on failure.
+    """
+    if from_unit == to_unit:
+        return {"Error": _("To and from unit is the same")}
+
+    from_cat, src = _find_unit(from_unit)
+    to_cat,   dst = _find_unit(to_unit)
+
+    if not src or not dst:
+        return {"Error": _("Problem converting {} and {}").format(from_unit, to_unit)}
+    if from_cat != to_cat:
+        return {"Error": _("Units are from different categories")}
+
+    return {
+        "category":   from_cat,
+        "converted":  gc_units.convert(amount, src[0], dst[0], from_cat),
+        "fromabbrev": src[0],
+        "fromlong":   src[1],
+        "fromplural": src[2],
+        "toabbrev":   dst[0],
+        "tolong":     dst[1],
+        "toplural":   dst[2],
+    }
+
+
+def smart_precision(separator: str, amount: float, preferred: int = 3) -> int:
+    """Return an appropriate number of decimal places for display."""
+    s = str(amount)
+    dec_places = s[::-1].find(separator)
+    if dec_places == -1:
+        return 0
+    frac = s[-dec_places:]
+    if int(frac) == 0:
+        return 0
+    fnz = re.search(r"[1-9]", frac).start()
+    return preferred if fnz < preferred else fnz + 1
+
+
+# ---------------------------------------------------------------------------
+# Flox plugin
+# ---------------------------------------------------------------------------
 
 class GenConvert(Flox):
-    locale.setlocale(locale.LC_NUMERIC, "")
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.logger_level("info")
 
     def query(self, query):
-        q = query.strip()
-        args = q.split(" ")
-        # Just keyword - show all units if the setting allows
+        args = query.strip().split()
+
         if len(args) == 1:
-            all_units = get_all_units()
-            self.add_item(
-                title=_("General Converter"),
-                subtitle=_(
-                    "<Hotkey> <Amount> <Source unit - case sensitive> <Destination unit - case sensitive>"
-                ),
-            )
-            if self.settings.get("show_helper_text"):
-                for cat in all_units:
-                    title = str(cat[0])
-                    subtitle = ", ".join([str(elem) for elem in cat[1:]])
-                    lines = textwrap.wrap(subtitle, 110, break_long_words=False)
-                    if len(lines) > 1:
-                        self.add_item(
-                            title=(title),
-                            subtitle=(lines[0]),
-                            icon=f"assets/{title}.ico",
-                        )
-                        for line in range(1, len(lines)):
-                            self.add_item(
-                                title=(title),
-                                subtitle=(lines[line]),
-                                icon=f"assets/{title}.ico",
-                            )
-                    else:
-                        self.add_item(
-                            title=(title),
-                            subtitle=(subtitle),
-                            icon=f"assets/{title}.ico",
-                        )
-        # Keyword and first unit to convert from - show what it can be converted to
+            self._show_all_units()
         elif len(args) == 2:
             hints = get_hints_for_category(args[1])
             self.add_item(
                 title=_("Available conversions"),
-                subtitle=(f"{args[0]} {args[1]} to {', '.join(hints)}"),
+                subtitle=f"{args[0]} {args[1]} to {', '.join(hints)}",
             )
-        # Keyword and two units to convert from and to - try to convert
         elif len(args) == 3:
-            try:
-                # Units are case sensitive.
-                do_convert = gen_convert(float(args[0]), args[1], args[2])
-                if "Error" in do_convert:
-                    if do_convert["Error"] == _("To and from unit is the same"):
-                        self.add_item(
-                            title=_("{}".format(do_convert["Error"])),
-                            subtitle=_("Choose two different units"),
-                        )
-                    else:
-                        self.add_item(
-                            # f strings seem to break babel so use string formatting instead
-                            title=_("Error - {}").format(do_convert["Error"]),
-                            subtitle=_("Check documentation for accepted units"),
-                        )
-                else:
-                    converted = do_convert["converted"]
-                    category = do_convert["category"]
-                    to_long = do_convert["toplural"]
-                    to_abb = do_convert["toabbrev"]
-                    from_long = do_convert["fromplural"]
-                    from_abb = do_convert["fromabbrev"]
-                    converted_precision = smart_precision(
-                        locale.localeconv()["decimal_point"], converted, 3
-                    )
-                    self.add_item(
-                        title=(category),
-                        subtitle=(
-                            f"{locale.format_string('%.10g', float(args[0]), grouping=True)} {from_long} ({from_abb}) = {locale.format_string(f'%.{converted_precision}f', converted, grouping=True)} {to_long} ({to_abb})"
-                        ),
-                        icon=f"assets/{do_convert['category']}.ico",
-                    )
-                    do_convert = []
-            except Exception as e:
-                self.add_item(title="Error - {}").format(repr(e), subtitle="")
-        # Always show the usage while there isn't a valid query
+            self._do_convert(*args)
         else:
             self.add_item(
                 title=_("General Converter"),
                 subtitle=_("<Hotkey> <Amount> <Source unit> <Destination unit>"),
             )
 
+    def _show_all_units(self):
+        self.add_item(
+            title=_("General Converter"),
+            subtitle=_("<Hotkey> <Amount> <Source unit - case sensitive> <Destination unit - case sensitive>"),
+        )
+        if not self.settings.get("show_helper_text"):
+            return
+        for cat in get_all_units():
+            title    = str(cat[0])
+            subtitle = ", ".join(str(e) for e in cat[1:])
+            icon     = f"assets/{title}.ico"
+            for line in textwrap.wrap(subtitle, 110, break_long_words=False) or [subtitle]:
+                self.add_item(title=title, subtitle=line, icon=icon)
 
-def get_all_units(short: bool = False):
-    """Returns all available units as a list of lists by category
+    def _do_convert(self, raw_amount: str, from_unit: str, to_unit: str):
+        try:
+            result = gen_convert(float(raw_amount), from_unit, to_unit)
+        except ValueError:
+            self.add_item(title=_("Error - invalid number"), subtitle=raw_amount)
+            return
 
-    :param short: if True only unit abbreviations are returned, default is False
-    :type amount: bool
+        if "Error" in result:
+            err = result["Error"]
+            sub = (_("Choose two different units")
+                   if err == _("To and from unit is the same")
+                   else _("Check documentation for accepted units"))
+            self.add_item(title=err, subtitle=sub)
+            return
 
-    :rtype: list of lists
-    :return: A list of lists for each category in units. Index 0 of each internal list
-            is the category description
-    """
+        dp            = locale.localeconv()["decimal_point"]
+        precision     = smart_precision(dp, result["converted"], 3)
+        amount_fmt    = locale.format_string("%.10g",            float(raw_amount),   grouping=True)
+        converted_fmt = locale.format_string(f"%.{precision}f", result["converted"], grouping=True)
+        copy_value    = locale.format_string(f"%.{precision}f", result["converted"])  # no thousands sep
 
-    full_list = []
-    for u in gc_units.units:
-        cat_list = []
-        cat_list.append(u)
-        for u2 in gc_units.units[u]:
-            cat_list.append(u2[0] if short else f"{u2[1]} ({u2[0]})")
-        full_list.append(cat_list)
-    return full_list
+        self.add_item(
+            title=result["category"],
+            subtitle=(
+                f"{amount_fmt} {result['fromplural']} ({result['fromabbrev']}) = "
+                f"{converted_fmt} {result['toplural']} ({result['toabbrev']})"
+                f"  [Enter copies value]"
+            ),
+            icon=f"assets/{result['category']}.ico",
+            method=self.copy_to_clipboard,
+            parameters=[copy_value],
+        )
 
-
-def get_hints_for_category(from_unit: str):
-    """Takes an input unit and returns a list of units it can be converted to
-
-    :param from_short: unit abbreviation
-    :type amount: str
-
-    :rtype: list
-    :return: A list of other unit abbreviations in the same category
-    """
-    c = []
-    category = ""
-
-    # Find the category it's in
-    for u in gc_units.units:
-        for u2 in gc_units.units[u]:
-            if u2[0] == from_unit or u2[1] == from_unit or u2[2] == from_unit:
-                category = str(u)
-                for uu in gc_units.units[category]:
-                    if uu[0] != from_unit:
-                        c.append(uu[0])
-    if category:
-        return c
-    else:
-        return ["no valid units"]
-
-
-def gen_convert(amount: float, from_unit: str, to_unit: str):
-    """Converts from one unit to another
-
-    :param amount: amount of source unit to convert
-    :type amount: float
-    :param from_unit: abbreviation of unit  to convert from
-    :type from_unit: str
-    :param to_unit: abbreviation of unit to convert to
-    :type to_unit: str
-
-    :rtype: dict
-    :return: if to_unit and from_unit are valid returns a dictionary
-            {
-                "category":{category of units},
-                "converted":{converted amount},
-                "fromabbrev":{from unit abbreviation},
-                "fromlong":{from unit long name},
-                "fromplural":{from unit plural name},
-                "toabbrev":{to unit abbreviation},
-                "tolong":{to unit long name},
-                "toplural":{to unit plural name},
-            }
-
-            else returns a dictionary with error status
-            {"Error": {error text}}
-    """
-    conversions = {}
-    found_from = found_to = []
-    if from_unit == to_unit:
-        conversions["Error"] = _("To and from unit is the same")
-        return conversions
-    for u in gc_units.units:
-        for u2 in gc_units.units[u]:
-            if u2[0] == from_unit or u2[1] == from_unit or u2[2] == from_unit:
-                found_from = u2
-            if u2[0] == to_unit or u2[1] == to_unit or u2[2] == to_unit:
-                found_to = u2
-        # If we haven't both in the same category, reset
-        if found_to and found_from:
-            found_category = u
-            break
-        else:
-            found_from = found_to = []
-    if found_to and found_from:
-        base_unit_conversion = eval(found_from[3].replace("x", str(amount)))
-        final_conversion = eval(found_to[4].replace("x", str(base_unit_conversion)))
-        conversions["category"] = found_category
-        conversions["converted"] = final_conversion
-        conversions["fromabbrev"] = found_from[0]
-        conversions["fromlong"] = found_from[1]
-        conversions["fromplural"] = found_from[2]
-        conversions["toabbrev"] = found_to[0]
-        conversions["tolong"] = found_to[1]
-        conversions["toplural"] = found_to[2]
-
-    else:
-        conversions["Error"] = "Problem converting {} and {}".format(from_unit, to_unit)
-    return conversions
-
-
-def smart_precision(separator, amount, preferred=3):
-    str_amt = str(amount)
-    dec_places = str_amt[::-1].find(separator)
-    # whole number
-    if dec_places == -1:
-        return 0
-    frac_part = str_amt[-dec_places::]
-    # fraction is just zeroes
-    if int(frac_part) == 0:
-        return 0
-    fnz = re.search(r"[1-9]", frac_part).start()
-    if fnz < preferred:
-        return preferred
-    return fnz + 1
+    def copy_to_clipboard(self, value: str):
+        """Copy converted value to Windows clipboard via clip.exe."""
+        subprocess.run(["clip"], input=value.encode("utf-16-le"), check=True)
